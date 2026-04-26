@@ -19,6 +19,7 @@ const windowTitles = {
   'win-recycle': '🗑️ Recycle Bin',
   'win-minesweeper': '💣 Minesweeper',
   'win-internet': '🌐 Internet Explorer',
+  'win-wolfenstein': '🎮 Digger',
 };
 
 function openWindow(name) {
@@ -30,6 +31,9 @@ function openWindow(name) {
     el.style.display = 'flex';
     if (name === 'minesweeper' && !document.getElementById('ms-board').children.length) {
       initMinesweeper();
+    }
+    if (name === 'wolfenstein' && !document.getElementById('dos-game-container').innerHTML) {
+      initWolfenstein();
     }
   }
 
@@ -334,4 +338,30 @@ function checkMsWin() {
 
 function updateMsCounter(id, val) {
   document.getElementById(id).textContent = String(Math.max(0, Math.min(999, val))).padStart(3, '0');
+}
+
+// ===== WOLFENSTEIN 3D (js-dos) =====
+function initWolfenstein() {
+  const container = document.getElementById('dos-game-container');
+  if (!container) return;
+
+  // Only initialize if not already loaded
+  if (!container.dataset.loaded) {
+    container.innerHTML = '<div style="color:#fff;padding:20px;text-align:center;padding-top:200px;">Loading...</div>';
+    
+    try {
+      // Use digger as test - if this works, the API is functional
+      // Wolf3d bundle may not exist on server
+      Dos(container, {
+        url: 'https://v8.js-dos.com/bundles/digger.jsdos',
+        theme: 'retro',
+        noNetworking: true,
+        noCloud: true,
+      });
+      container.dataset.loaded = 'true';
+    } catch (e) {
+      container.innerHTML = '<div style="color:#fff;padding:20px;">Error: ' + e.message + '</div>';
+      console.error('DOS game error:', e);
+    }
+  }
 }

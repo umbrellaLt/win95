@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Windows 95</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+  <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
 </head>
 <body>
 
@@ -30,6 +32,10 @@
     <div class="desktop-icon" ondblclick="openWindow('internet')">
       <div class="icon-img">🌐</div>
       <span>Internet<br>Explorer</span>
+    </div>
+    <div class="desktop-icon" ondblclick="openWindow('wolfenstein')">
+      <div class="icon-img">🎮</div>
+      <span>Digger</span>
     </div>
     <div class="desktop-creator">
       <span>created by Robert Paulsson</span>
@@ -150,6 +156,20 @@ Type something here...</textarea>
       <div style="margin-top:18px;font-size:12px;color:#666;">You are not connected to the Internet.</div>
     </div>
     <div class="win-statusbar">Done</div>
+  </div>
+
+  <div class="win95-window" id="win-wolfenstein" style="display:none; top:60px; left:100px; width:800px; height:600px;">
+    <div class="win-titlebar" onmousedown="dragStart(event, 'win-wolfenstein')">
+      <span class="win-title"><span class="win-icon">🎮</span> Digger</span>
+      <div class="win-controls">
+        <button onclick="minimizeWindow('win-wolfenstein')">_</button>
+        <button onclick="maximizeWindow('win-wolfenstein')">□</button>
+        <button onclick="closeWindow('win-wolfenstein')">✕</button>
+      </div>
+    </div>
+    <div class="win-content" style="padding:0; background:#000;">
+      <div id="dos-game-container" style="width:100%;height:100%;"></div>
+    </div>
   </div>
 
   <!-- Start Menu -->
