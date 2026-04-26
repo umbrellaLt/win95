@@ -4,7 +4,7 @@
 body {
   font-family: 'Arial', sans-serif;
   font-size: 12px;
-  background: #008080 url('media/background.jpg') center/cover no-repeat;
+  background: #008080 url('media/background.jpg') center/contain no-repeat;
   height: 100vh;
   overflow: hidden;
   user-select: none;
@@ -42,6 +42,18 @@ body {
 .desktop-icon:focus { outline: 1px dotted #fff; }
 .icon-img { font-size: 32px; margin-bottom: 4px; line-height: 1; }
 .desktop-icon img { display: none; }
+
+/* ===== CREATOR CREDIT ===== */
+.desktop-creator {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px #000;
+  text-align: center;
+}
 
 /* ===== TASKBAR ===== */
 #taskbar {
